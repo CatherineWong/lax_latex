@@ -143,7 +143,7 @@ Then, by predicting participants' descriptions from programs expressed in differ
 % What determines the basic level of abstraction a person chooses to describe these compositional stimuli, amongst the possible vocabularies of nameable parts?
 
 %%%% PROGRAM-LIKE CONCEPTS
-% We approach this question through a formal computational model that builds on two related lines of work. Prior word learning models \shortcite{xu2007word,frank2009using} have proposed that for \textit{individual} category names, contextual word choice can be modeled as Bayesian optimality over a hypothesis space of alternatives. Agents may build on an initial library of primitive concepts with new \textit{abstractions}, chunked sub-routines which abstract over programs written in lower-level primitives. Prior experimental work has used models of program \textit{abstraction} learning to explain people's motor abstraction learning over domains of compositional drawing stimuli \shortcite{tian2020learning}; and to model human coordination on shared object representations when assembling simple, compositional block towers \shortcite{mccarthy2021learning}.
+% We approach this question through a formal computational model that builds on two related lines of work. Prior word learning models \shortcite{xu2007word,frank2009using} have proposed that for \textit{individual} category names, contextual word choice can be modeled as Bayesian optimality over a hypothesis space of alternatives. Agents may build on an initial library of primitive concepts with new \textit{abstractions}, chunked subroutines which abstract over programs written in lower-level primitives. Prior experimental work has used models of program \textit{abstraction} learning to explain people's motor abstraction learning over domains of compositional drawing stimuli \shortcite{tian2020learning}; and to model human coordination on shared object representations when assembling simple, compositional block towers \shortcite{mccarthy2021learning}.
 
 
 %%%% FRAMEWORK TO INFER CONCEPT LIBRARY PEOPLE USING TO COMMUNICATE ABOUT OBJECT STRUCTURE
@@ -175,7 +175,10 @@ Then, by predicting participants' descriptions from programs expressed in differ
 % While the overarching aim of this paper was to investigate how people talk about the compositional structure of objects, we also wanted to explore how context affects the concepts we use to represent and talk about objects-- particularly the level of abstraction our concepts occupy.
 % We therefore needed a set of stimuli that a) had varied compositional structure, b) could be divided into multiple distinct categories (i.e. contexts), and c) was constructed from a set of simple elements that could be combined at various levels of abstraction.
 
-How do people describe the compositional structure of complex objects across varied domains? And how does context affect the level of abstraction that people use to represent objects? To study these questions, we developed a large dataset of hierarchical object stimuli and conducted a procedural language experiment to elicit human descriptions of each object (Fig. \ref{fig:task}A). In this section, we detail our dataset and task procedure, establishing a basic correspondence between the language participants used to describe our stimuli and the programmatic representations that underlie their construction.
+How do people describe the compositional structure of complex objects across varied domains?
+And how does context affect the level of abstraction that people use to represent objects?
+To study these questions, we developed a large dataset of hierarchically structured object stimuli and conducted a procedural language experiment to elicit human descriptions of each object (Fig. \ref{fig:task}A).
+In this section, we detail our dataset and task procedure, and establish a basic correspondence between the language participants used to describe our stimuli and the programmatic representations that underlie their construction.
 
 \subsection{Methods}
 
@@ -204,24 +207,24 @@ Participants provided informed consent and were paid approximately \$15 per hour
 % While many such categories exist in the real world, these often come with canonical ways of being decomposed into parts, or have a hierarchical structure that is too ambiguous to permit the formal modeling approach of \ref{sec-part-ii}.
 
 % To construct a set of stimuli with variation in compositional structure, 
-We procedurally generated stimuli using a set of nested, parametric functions operating on a set of base primitives, hierarchically composing them into increasingly complex, recursively-defined parts.
-A \textit{dresser}, for example, is composed of \textit{drawers}, which are in turn composed of a \textit{panel} and \textit{knobs}, and which are defined finally over a shared set of simple shape primitives (Fig. \ref{fig:task}B).
 Our stimulus set was divided into two distinct \textit{domains}, each procedurally generated from a different set of base primitives:
 \textit{technical drawings} were designed to resemble schematic drawings of functional objects and were composed of simple geometric shapes; 
 \textit{block towers} were designed to resemble simple architectural models and were composed of 2D rectangular blocks.
-% Different compositional structure within domain (difference between subdomains)
-Each \textit{domain} was further divided into four \textit{subdomains}, each defined by a distinct generative procedure that was hand-designed to produce objects of a recognizable subordinate category (e.g., \textit{furniture}, \textit{castle}) from a set of predefined abstractions (e.g., \textit{legs}, \textit{towers}).
-Along with each stimulus, the generative procedures also emitted a corresponding program, written in a Domain Specific Language (DSL), that fully specified a procedure for recreating the stimulus from the set of base primitives for that \textit{domain}.
+Each of the two domains were further divided into four \textit{subdomains}, each defined by a distinct generative model that was hand-designed to produce objects of a recognizable subordinate category (e.g., \textit{furniture}, \textit{castle}) from a set of predefined abstractions (e.g., \textit{legs}, \textit{towers}).
+Generative models consisted of a set of nested, parametric functions operating over the base primitives, hierarchically composing them into increasingly complex, recursively-defined parts.
+A \textit{dresser}, for example, is composed of \textit{drawers}, which are in turn composed of a \textit{panel} and \textit{knobs}, and which are defined finally over a shared set of simple shape primitives.
+Along with each stimulus, generative models also emitted a corresponding \textit{program}, expressed in a \textit{Domain Specific Language} (DSL), that fully specified a procedure for recreating the stimulus from the set of base primitives shared across its \textit{domain}.
 We enumerated all possible stimuli for each subdomain, and selected a random but biased sample of each to obtain 250 stimuli of varying complexity for each subdomain.
 
 \paragraph{Task procedure}
 
-Each participant produced descriptions for 10 items from a single \textit{subdomain} (e.g., only \textit{castles}). 
-To gain familiarity with the task-relevant distribution of stimuli and part abstractions, participants first clicked through 25 images of other stimuli from their subdomain. 
+Each participant produced descriptions for 10 items drawn from a single \textit{subdomain} (e.g., only \textit{castles}). 
+To gain familiarity with the task-relevant distribution of stimuli and part abstractions, participants first clicked through 25 images of other stimuli from the same subdomain.
 As participants typed descriptions, they also saw previews for 7 upcoming stimuli.
 % However participants were not encouraged to produce instructions that disambiguated their items from others in their domain, as in a traditional reference game.
-We asked participants to type a complete ``step-by-step'' procedure for reconstructing a stimulus, either describing how to ``draw'' the item if it was a \textit{technical drawing}, or how to ``build'' the item if it was a \textit{block tower} To disentangle the language used to refer to the parts of an object from spatial descriptions of where those parts should go, participants typed their responses, step-by-step, into a pair of \textit{what} and \textit{where} text boxes, describing in each step what should be drawn/placed where to reproduce the target image. Participants could add as many instruction steps as they liked for each stimulus and had no time limit.
-
+We asked participants to type a complete ``step-by-step'' procedure for reconstructing a stimulus, either describing how to ``draw'' the item if it was a \textit{technical drawing}, or how to ``build'' the item if it was a \textit{block tower}.
+To disentangle the language used to refer to the parts of an object from spatial descriptions of where those parts should go, participants typed each step of their procedure into a pair of \textit{what} and \textit{where} text boxes, describing what should be drawn/placed where, in order, to reproduce the target image. 
+Participants could add as many instruction steps as they needed and had no time limit.
 
 \paragraph{Language preprocessing} % spacy, en_core_web_lg,
 To better investigate the content of the instructions generated by participants, we use the spaCy NLP library to extract and lemmatize words, using part-of-speech (POS) tagging to remove determiners and punctuation. We also replaced common typos (``sqaure,'' ``cirlce,'' etc.) and spelling variations (``centre,'' ``colour,'' etc.) with their canonical spellings in US English.
@@ -243,8 +246,6 @@ We first set out to establish whether participants' language was sensitive to th
 We ran a linear mixed effects models with fixed effects for domain and trial number, an interaction term between the two, as well as random intercepts for subdomain and participant.
 \textit{Block tower} instructions were longer than those for \textit{technical drawings}, both in terms of the number of \textit{what-where} steps  ($b=5.08$, $t=10.9$, $p<0.001$) and raw character counts ($b=373$, $t=8.24$, $p<0.001$). 
 % We suspected that this was due to participants identifying a greater number of distinct entities in the \textit{block tower} stimuli, which was supported by a greater number of words entered in the \textit{what} boxes of \textit{block towers} than for \textit{technical drawings} ($b=25.8$, $t=9.55$, $p<0.001$).
-% GG: Removed below, interesting finding but doesn't connect to anything else in the paper.
-% In both of the above models, we found a significant negative fixed effect of trial number, as well as an interaction between trial number and domain consistent with a faster drop off in description length for block towers. This suggests that participants produced more concise instructions over time, consistent with prior work suggesting a shift to higher-level abstractions as people repeatedly describe block towers \cite{mccarthy2021learning}.
 % Together, these results confirm that participants' descriptions were sensitive to the kinds of items they were describing, but what about the stimuli themselves explains this variation in language? 
 Prior work has suggested a systematic but non-linear relationship between the complexity of objects and the length of their linguistic descriptions \cite{sun2021seeing}, which was consistent with initial observations in our data (Fig. \ref{fig:words}A).
 % To test this hypothesis more rigorously, we operationalized natural-language description length using the mean number of words entered in the \textit{what} text boxes and operationalized the program length as the number of tokens required to express that object in the base DSL.
@@ -299,19 +300,21 @@ We use this extended model to formalize a hypothesis that links linguistic vocab
 
 \subsection{Methods}
 \paragraph{Abstract DSL extraction} 
-Part I describes how stimuli in each subdomain are procedurally generated, by hierarchically composing a set of base program primitives into latent programs for each stimulus (Fig. \ref{fig:library_gallery}A, \textit{Base}). These base DSLs (\textit{blocks} and \textit{shape strokes}) are simple but low-level: the resulting programs do not reflect the higher-order parametric structure of each subdomain.
+Part I describes how stimuli in each subdomain are procedurally generated by hierarchically composing a set of base program primitives into latent programs for each stimulus (Fig. \ref{fig:library_gallery}A, \textit{Base}). These base DSLs (\textit{blocks} and \textit{shape strokes}) are simple but low-level: the resulting programs do not reflect the higher-order parametric structure of each subdomain.
 
-We can, however, extract \textit{higher-order DSLs} that abstract out the nested, parametric functions used to generate each subdomain. These higher-order DSLs rewrite the latent program for each stimulus in terms of concise program abstractions: chunked sub-routines representing repeated part structure (such as \textit{wheel} or \textit{roof} components) shared across a given subdomain
-(see Fig. \ref{fig:library_gallery}). This top-down DSL extraction procedure is analogous to the automated, bottom-up \textit{program library learning} methods in \shortcite{ellis2020dreamcoder, tian2020learning, mccarthy2021learning}, which discover chunked sub-routines from a dataset of latent programs. However, with access to each subdomain's hierarchical generation procedure, we can construct these DSLs directly. 
+We can, however, extract \textit{higher-order DSLs} that abstract out the nested, parametric functions used to generate each subdomain. These higher-order DSLs rewrite the latent program for each stimulus in terms of concise program abstractions: chunked subroutines representing repeated part structure (such as \textit{wheel} or \textit{roof} components) shared across a given subdomain
+(see Fig. \ref{fig:library_gallery}). This top-down DSL extraction procedure is analogous to the automated, bottom-up \textit{program library learning} methods in \shortcite{ellis2020dreamcoder, tian2020learning, mccarthy2021learning}, which discover subroutines from a dataset of latent programs that often correspond qualitatively to domain-relevant concepts.
+% However, with access to each subdomain's hierarchical generation procedure, we can construct these DSLs directly.
+However, in this work, we chose to construct DSLs manually, allowing us to consider a wide range of abstraction levels while maintaining a high degree of fidelity to the procedures by which the stimuli were originally generated.
 
-We extract three higher-order DSLs ($L_1$, $L_2$, $L_3$, visualized in Fig. \ref{fig:library_gallery}) that coarsely bucketize subdomain structure into three levels of increasing abstraction. By construction, components in successively higher-order DSLs build recursively on those at the previous level: for instance, the components in $L_1$ contain chunked sub-routines that abstract directly over the base DSL (\textit{lines} to \textit{polygons}); and components in $L_2$ abstract additionally over those in $L_1$ (\textit{polygons} to \textit{rows of polygons}). 
+We extract three higher-order DSLs ($L_1$, $L_2$, $L_3$, visualized in Fig.~\ref{fig:library_gallery}) that coarsely bucketize subdomain structure into three levels of increasing abstraction. By construction, components in successively higher-order DSLs build recursively on those at the previous level: for instance, the components in $L_1$ contain chunked subroutines that abstract directly over the base DSL (\textit{lines} to \textit{polygons}); and components in $L_2$ abstract additionally over those in $L_1$ (\textit{polygons} to \textit{rows of polygons}). 
 
 \paragraph{Vocabulary-DSL alignment metric}
-The DSLs constructed in the previous section formalize a hypothesis space of alternative \textit{subdomain-level} representations at differing levels of abstraction. We can now ask: which (if any) of these DSLs best describes the linguistic vocabulary speakers use for each subdomain? 
+The DSLs constructed in the previous section specify a hypothesis space of alternative \textit{subdomain-level} representations at differing levels of abstraction. We can now ask: which (if any) of these DSLs best describes the linguistic vocabulary speakers use for each subdomain? 
 
-We formalize this with a \textit{vocabulary-DSL alignment metric}, fit using token-token \textit{statistical alignment models} used to relate parallel language datasets in machine translation. Here, we use these models to derive an aggregate metric of how well programs in a given DSL predict words in corresponding instructions across each subdomain.
+% We formalize this notion of lexical correspondence with a \textit{vocabulary-DSL alignment metric} that leverages token-token statistical alignment models used to relate parallel language datasets in machine translation. Here, we use these models to derive an aggregate metric of how closely program components in a given DSL co-occur with words across each subdomain.
 
-We use the IBM1 \shortcite{gal2013systematic} model formulation, a standard machine translation model which can be fit to subdomain-level paired programs and instructions, and estimates token-token translation probabilities $P(l|p)$ (for each word $l$ in the linguistic vocabulary and program component $p$ in a DSL). We evaluate each DSL $L_i$ for each subdomain using a cross-validation scheme (with batches of n=5 heldout stimuli): we fit the model to all but the heldout stimuli, then evaluate the \textit{mean per-word log-likelihood} for each heldout instruction given its latent program in DSL $L_i$; we use \textit{mean token log-likelihood} (which correlates monotonically with negative {perplexity} \shortcite{wu2016google}) to normalize for instruction lengths. For comparison with Part I, we consider only the pre-processed `what' descriptions for each stimulus.
+We formalize this notion of lexical correspondence with a \textit{vocabulary-DSL alignment metric} that reflects how closely program components in a given DSL co-occur with words across each subdomain. To compute this metric, we leverage IBM Model 1 \shortcite{gal2013systematic}, a standard machine translation model which can be fit to paired programs and instructions to estimate token-token translation probabilities $P(l|p)$ (for each word $l$ in the linguistic vocabulary and program component $p$ in a DSL). For each subdomain, we evaluate each DSL $L_i$ using a cross-validation scheme (with batches of n=5 held out stimuli). We fit the model to all but the held out stimuli and evaluate the \textit{mean per-word log-likelihood} for each held out instruction given its latent program in DSL $L_i$. We use \textit{mean token log-likelihood} (which correlates monotonically with negative {perplexity} \shortcite{wu2016google}) to normalize for instruction lengths. For comparison with Part I, we consider only the pre-processed `what' instructions for each stimulus.
 
 \begin{figure*}[!ht]
   \begin{center}
@@ -322,61 +325,59 @@ We use the IBM1 \shortcite{gal2013systematic} model formulation, a standard mach
 \end{figure*}
 
 \subsection{Results}
-\paragraph{Linguistic analysis of sub-domain vocabularies} % Looking at content rather than length
-We conduct a preliminary linguistic analysis of subdomain-level vocabulary variation. We aggregate the preprocessed instructions across each subdomain and compute the pointwise mutual information (PMI) of each word with respect to each subdomain (as opposed to the full domain; we consider the domains independently.) We compute PMIs using a Laplace smoothing metric to eliminate extremely low-frequency words (n $\leq$ 5); full analysis code is released at the code repository.
-
-Fig. \ref{fig:vocabulary_gallery}A (left, black) shows the top 10 words ordered by their \textit{base counts} across each whole domain, contrasted by the top-10 words ordered by \textit{PMI} for each subdomain (right columns, colored), indicating the usage of words (eg. \textit{drawer}, \textit{leg}, and \textit{knob} in the \textit{furniture} subdomain) suggestive of subdomain-specific part structure. 
-
-Fig. \ref{fig:library_gallery}B also shows TSNE-visualizations of word-count vectors constructed for each stimulus, suggesting that there may be greater subdomain-leve; language differentation in the \textit{technical drawings} domain than in the \textit{block towers} domain. This is further supported by computing the F-statistic to measure within-cluster variance, comparing word-count vectors labeled with a given subdomain to randomly-assigned subdomain labels. We find that the \textit{technical drawing} subdomain labels explain cluster variance signficantly better than random assignments ($\Delta F = 12.5$, 95\% CI: [$9.46$, $16.0$], $p=0$); this is not quite significant for subdomain labels in the \textit{block towers} domain ($\Delta F = 1.47$, 95\% CI: [$0.0441$, $2.83$], $p=0.088$).
-
-
-
 \begin{figure}[b!]
   \begin{center}
   \includegraphics[width=\linewidth]{figures/fig_perplexity_costs_narrow.pdf}
   \caption{[SCRATCH] Perplexity (blue, left y-axis) and combined DSL size and program length (red, right y-axis) within each subdomain; shown with respect to DSL size; DSL size increases with additional higher-level abstractions. Shown for the base DSL, $L_1$, $L_2$, and $L_3$.}\label{fig:perplexity-length}
   \end{center}
-\end{figure} 
+\end{figure}
 
-\subsection{[CHANGE] Library correlations}
+\paragraph{Linguistic analysis of sub-domain vocabularies} % Looking at content rather than length
+We conduct a preliminary linguistic analysis of subdomain-level vocabulary variation. We aggregate the preprocessed instructions across each subdomain and compute the pointwise mutual information (PMI) of each word with respect to each subdomain (as opposed to the full domain; we consider the domains independently.) We compute PMIs using a Laplace smoothing metric to eliminate extremely low-frequency words (n $\leq$ 5); full analysis code is released at the code repository.
 
-Fig. \ref{fig:libraries_correlations} (blue) shows cross-validated \textit{mean log-likelihoods} for heldout stimuli, plotted with respect to $log(|L|)$, the log-size of each library; as discussed earlier, library size increases with level of abstraction, as increasingly abstract libraries contain additional, more-specific DSL components. Therefore, plots show (from left to right), results with respect to the base DSL, and $L_1$, $L_2$, and $L_3$, from least to most abstract. 
+Fig. \ref{fig:vocabulary_gallery}A (left, black) shows the top 10 words ordered by their \textit{base counts} across each whole domain, contrasted by the top-10 words ordered by \textit{PMI} for each subdomain (right columns, colored), indicating the usage of words (eg. \textit{drawer}, \textit{leg}, and \textit{knob} in the \textit{furniture} subdomain) suggestive of subdomain-specific part structure. 
 
-\paragraph{Mean log-likelihood under the program-language alignment model identifies specific DSLs which best explain language.} We first ask whether perplexity meaningfully identifies differences between the DSLs with respect to language. A one-way ANOVA confirms that there is a strongly significant difference in mean perplexity across DSLs (p $<$ 0.001) for all subdomains. 
+Fig. \ref{fig:library_gallery}B also shows TSNE-visualizations of word-count vectors constructed for each stimulus, suggesting that there may be greater subdomain-level language differentation in the \textit{technical drawings} domain than in the \textit{block towers} domain. This is further supported by computing the F-statistic to measure within-cluster variance, comparing word-count vectors labeled with a given subdomain to randomly-assigned subdomain labels. We find that the \textit{technical drawing} subdomain labels explain cluster variance signficantly better than random assignments ($\Delta F = 12.5$, 95\% CI: [$9.46$, $16.0$], $p=0$); this effect is not significant for subdomain labels in the \textit{block towers} domain ($\Delta F = 1.47$, 95\% CI: [$0.0441$, $2.83$], $p=0.088$).
 
-\paragraph{$|$L + program length$|$ is non-monotonic with respect to abstraction level.} Fig. \ref{fig:perplexity-length} (red) shows $log(|L + $program length$|)$. Note that we show log-values for visual convenience, as DSL size grows superlinearly with level of abstraction. This highlights an intriguing trend. As discussed, DSL size ($|L|$) \textit{increases} with level of abstraction (as we augment the base DSL with more and increasingly specific sub-routines); program description length \textit{decreases} with level of abstraction (as we rewrite programs using increasingly complex sub-routines).
+\paragraph{Intermediate DSLs minimize combined DSL and program representational cost} Our DSL extraction procedure reflects a subdomain-level tradeoff in representational cost: higher-order DSLs \textit{compress} latent programs for individual stimuli (Fig. \ref{fig:library_gallery}B), as each program can be written using a smaller number of subdomain-specific part abstractions. However, each higher-order DSL is subsequently larger than the last: it adds more unique, subdomain-specific abstractions.
+% (and following earlier work, such as \shortcite{mccarthy2021learning, ellis2020dreamcoder}, we add new abstract components cumulatively while retaining their lower-level components in the DSL). 
+This tradeoff between program description length $|program|$ and DSL size $|L|$ is well-described in prior DSL-learning models \shortcite{ellis2020dreamcoder}, and is closely analogous to the information-theoretic, optimal compression problems described in \shortcite{kirby2015compression} -- referring to increasingly subdomain-specific components trades off concision in describing any one stimulus with the total number of concepts necessary to describe the whole domain. 
 
-But Fig. \ref{fig:perplexity-length} shows that the \textit{combined} description length of the DSL \textit{and} program length is non-monotonic with respect to level of abstraction, yielding a distinct, U-shaped curve with an optima located around the intermediate DSLs ($L_1$ and $L_2$ for each domain). The initial base DSL incurs cost under this combined description length due to the size of the programs themselves, written in the base primitives. But the most abstract DSL overwhelms initial reductions in program description length with the size of the DSL overall. This non-monotonicity is also discussed in prior work \shortcite{ellis2020dreamcoder, tian2020learning}, and indeed, motivates the joint prior over DSL size and program description length used to identify 'optimal' DSLs in these models.
+As DSL-size $L$ grows monotonically with level of abstraction (\textit{Base} $\leq L_1 \leq L_2 \leq L_3$, $L_2$), Fig. \ref{fig:perplexity-length} (red) plots this combined representational cost $|L + program|$ with respect to DSL-size $L$ alone (for visual convenience, we show the log-values along the x and y-axis). This reveals a characteristic non-monotonic trend: $|L + program|$ is minimized in intermediate-level DSLs, and increases in the base DSL (when programs are long) and in the highest-order DSLs (when the number of subomdain-specific abstractions overwhelms gains in program compression).
 
-\paragraph{Mean log-likelihood is generally non-monotonic with respect to abstraction level.} We now consider how \textit{perplexity} in the program-language alignment model varies with respect to the DSLs at increasing levels of abstraction. Again, we note that perplexity is non-length-dependent: it measures the average token predictability of a linguistic sentence, based on a given program. 
+\paragraph{Vocabularies align best with DSLs that jointly minimize DSL and program representational cost} We can finally consider the formal \textit{DSL-vocabulary alignment} metric in relation to our original, subdomain-level hypothesis. Fig. \ref{fig:perplexity-length} (blue) plots the \textit{mean-log-likelihoods} under the DSL-vocabulary alignment model (higher indicates words are better predicted by DSL components) for each subdomain, along the same $L$ x-axis.
 
-In all but two of the subdomains (\textit{cities} and \textit{castles}), Fig \ref{fig:perplexity-length} (blue) shows that perplexity also varies non-monotonically with respect to level of abstraction. More specifically, perplexity tends to be \textit{maximized} for intermediate DSLs, outperforming both the initial base DSL and the most abstract DSL.
+We first confirm that this metric identifies certain DSLs which align significantly better to the vocabulary than others. In all subdomains, a one-way ANOVA confirms that there is a strongly significant difference in mean-log-likelihoods between DSLs (p $<$ 0.001). 
 
-\paragraph{DSLs which best explain language generally minimize $|$L + program length$|$.} Finally, comparing optima between mean log-likelihood (blue) and the combined DSL and program length (red) supports our overall hypothesis: DSLs which better explain language (increasing mean log-likelihood in the program-language alignment model) correspond closely with those minimization, or near-minimization, in $|$L + program length$|$.
-
-While suggestive, there are several points worth discussing for future work. First, Fig \ref{fig:perplexity-length} shows that the correspondence between optima is not exact: in the \textit{vehicles} domain, for instance, we observe that $L_2$ minimizes $|$L + program length$|$, but yields slightly lower performance than $L_1$ in predicting language; and for both the \textit{cities} and \textit{castles} subdomains discussed earlier, the base DSL fits language better than \textit{any} of the DSLs with additional abstractions. In the majority of the domains, the best-fitting DSL under our program alignment model is $L_1$ -- corresponding to program components (visualized in Fig. \ref{fig:libraries_correlations}) above the initial base DSL, but at a relatively low level of abstraction.
-
-We first note that the DSL construction technique we use -- in which we coarsely bucketize abstractions into three more abstract DSLs -- introduces some arbitrariness in determining the specific DSLs we use here: we also only introduce abstractions based on nested, parametric variation in a particular procedural generative model over an initial set of base DSL components. Indeed, visual inspection of the components in Fig. \ref{fig:libraries_correlations} already suggests that some program abstractions constructed this way are more nameable in language than others -- block abstractions containing tiled units used to compose walls may simply be less visually distinctive, nameable, and therefore less likely to correspond systematically to words used in the stimuli descriptions. We see initialization to differing \textit{base DSLs}, and experimentation with other methods for introducing abstractions (including the automated methods in \shortcite{ellis2020dreamcoder} as especially promising directions for future work.
-
-% TBD: some extended discussion of the differing domains.
-The particular procedural language generation task we consider here -- in which subjects are familiarized to a given subdomain, but must still provide a fairly naive description to other unknown listeners without agreement on common ground conventional names for available parts -- also constrains speakers by linguistic availability: speakers can choose amongst levels of abstraction that can be described readily in the prior English terms available to them. We see the extended \textit{solo learning paradigms} in \shortcite{tian2020learning} (which find evidence of increasingly higher-order \textit{motor} abstraction with prolonged drawing experience) and \textit{collaborative communication} tasks in \shortcite{hawkins2017convention,mccarthy2021learning} (which find that paired communicators use increasingly concise, specialized linguistic abstractions with prolonged communicative feedback) as especially promising: one exciting direction for future work is to determine whether experience \textit{changes} the DSLs which best correlate with language over time. 
+In all but two of the subdomains (\textit{cities} and \textit{castles}), Fig \ref{fig:perplexity-length} (blue) shows that our DSL-vocabulary metric not only varies non-monotonically over the higher-order DSLs, but is maximized for intermediate DSLs. Comparing optima between mean log-likelihood (blue) and the combined DSL and program length (red) supports our overall hypothesis: DSLs that better explain language (increasing mean log-likelihood in the program-language alignment model) correspond closely with those that minimize, or approximately minimize, the joint representational cost $|$L + program length$|$.
 
 
 \subsection{Discussion}
 
+Language provides a window onto the way we extract and represent structure in the world.
+This paper presents an approach to using language to investigate conceptual structure, proposing a set of hierarchically constructed object stimuli, procedural description task, and set of metrics for connecting programmatic representations of object structure with linguistic descriptions.
+We find that the length of participants' descriptions varied with the length of the programs used to generate the stimuli, establishing a basic correspondence between language and programs.
+Furthermore, we find lexical variation across the subdomains of our dataset, allowing us to investigate more systematic mappings between language and program structure.
+(TODO: Part II one sentence summary.)
+
+
+
 The idea that people favor a \textit{basic level} of abstraction -- one adaptively selected as a "just right" level of abstraction dependent on context -- is well-documented in both word choice and non-linguistic object identification tasks \shortcite{brown1958shall, rosch1976basic}. 
+
+% How does individual learning modulate speaker-specific abstraction?
+%   =>  Pre-post study: individual non-linguistic experience vs. individual language usage
+In analyses not reported above, we also found evidence of a decrease in description length over time. 
+A possible explanation for this phenomenon, suggested by prior work involving a collaborative block-tower assembly task \cite{mccarthy2021learning}, is a linguistic shift towards higher level of abstraction over time.
+How people acquire new procedural abstractions, and the extent to which language use modulates such learning, is an avenue for future work.
+
+% How do communicative goals modulate the ‘right’ level/ kind of abstraction?
+%   => Other contexts e.g. reference-games
+
 
 % How contextual is the level of abstraction? 
 %   => Collect more data for item-specific and speaker-specific variation
 %   => Modulate size of domain even more
 
-% How do communicative goals modulate the ‘right’ level/ kind of abstraction?
-%   => Other contexts e.g. reference-games
-  
-% How does individual learning modulate speaker-specific abstraction?
-%   =>  Pre-post study: individual non-linguistic experience vs. individual language usage
-% We saw evidence of
-  
 % How does shared experience modulate the level of abstraction?
 %   => Paired tasks (CA++)
 
