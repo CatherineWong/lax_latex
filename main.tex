@@ -26,9 +26,10 @@
 \usepackage{stmaryrd}
 \usepackage{amssymb}
 \usepackage{todonotes}
+\usepackage{comment}
 
 %\cogscifinalcopy % Uncomment this line for the final submission 
-\newcommand{\jda}[1]{[jda brainstorming: #1]}
+\newcommand{\jda}[1]{{\color{blue}[jda: #1]}}
 
 
 \usepackage{pslatex}
@@ -66,16 +67,26 @@
 \maketitle
 
 
-\begin{abstract}
-% Our understanding of the visual world goes beyond naming objects --- encompassing the parts and relations that constitute our internal representation of them.
-Our understanding of the visual world goes beyond naming objects --- 
-Here we leverage the language people use to describe a diverse collection of 2K novel objects to --- how object structure is represented in the mind.
-We achieve this by formalizing our problem as search over the space of graphics libraries that vary in the visual part concepts they contain. 
-% although any of these libraries could in principle be used to generate each object.
-We then evaluate how well the programs written in each library explain quantitative and qualitative patterns in human language.
-While we find that a ``base'' library containing only the simplest shape primitives (e.g., block) explains some variance in the length of linguistic descriptions, we discover that libraries containing moderately complex part concepts (e.g., pillar) provide both efficient compression of these objects and better explain the way people describe them.
-Taken together, our findings highlight the value of measuring naturalistic language behavior at scale and using structured program representations for exposing the perceptual units we use to make sense of the world. 
+\begin{abstract} %% 148 words
+Our understanding of the visual world goes beyond naming objects --- encompassing our ability to parse objects into meaningful parts, attributes, and relations. 
+Here we leverage the language people use to describe a diverse collection of 2K novel objects to understand what parts they find meaningful, and reverse engineer why they favored these parts. 
+We achieve this by formalizing our problem as search over the space of graphics libraries that contain different part concepts;
+then evaluate how well programs written in each library explain human language.
+While a library containing only the simplest shape primitives (e.g., block) explains some variance, we discover that libraries containing moderately complex part concepts (e.g., pillar) provide both efficient compression of these objects and better explain how people describe them.
+Our findings highlight the value of measuring naturalistic language behavior at scale and using structured program representations for exposing how our perceptual 
+experience is organized. 
 
+%%% 183 words
+% Our understanding of the visual world goes beyond naming objects --- encompassing the the organization of our perceptual experience into parts and relations. 
+% Here we leverage the language people use to describe a diverse collection of 2K novel objects to understand what parts they find meaningful, and reverse engineer the principles that explain why they favored these part descriptors. 
+% We achieve this by formalizing our problem as search over the space of graphics libraries that vary in the visual part concepts they contain. 
+% We then evaluate how well the programs written in each library explain quantitative and qualitative patterns in human language.
+% While we find that a ``base'' library containing only the simplest shape primitives (e.g., block) explains some variance in the length of linguistic descriptions, we discover that libraries containing moderately complex part concepts (e.g., pillar) provide both efficient compression of these objects and better explain the way people describe them.
+% Taken together, our findings highlight the value of measuring naturalistic language behavior at scale and using structured program representations for exposing the perceptual units we use to make sense of the world. 
+%%%
+
+% Our understanding of the visual world goes beyond naming objects --- encompassing the parts and relations that constitute our internal representation of them.
+% although any of these libraries could in principle be used to generate each object.
 % To answer this question, we first designed a large and varied collection of 2K novel objects and elicited natural-language descriptions of them. 
 % Next, we evaluated how well these descriptions could be explained by relating them to graphics programs written using only maximally simple shape primitives. 
 
@@ -132,10 +143,61 @@ Taken together, our findings highlight the value of measuring naturalistic langu
 % People seem to communicate about structure. But how do we know what structure people actually represent? (Here, we have MUlTIPLE libraries that represent alternate hypotheses about structure -- what is the concept library people are actually using?) Prior work has evaluated SPECIFIC libraries.
 % People seem to communicate this IN language. (This is a particularly good window into the mind of their thoughts about structure.) We ALSO have a library identification tool that tells you which ONES best fit their overt behavior in language.
 
-\jda{}
+The world is filled with a great variety of objects, yet people have little difficulty making sense of them. 
+Presented with novel objects, people can readily identify their parts \cite{palmer1977hierarchical,marr1978representation, hoffman1984parts, hummel1992dynamic}, guess their functions \shortcite{tversky1984objects}, and refer to them unambiguously \cite{hawkins2020characterizing}. 
+These abilities rest on the ability to robustly connect features of the external world to a rich library of mental concepts describing not just objects, but their parts and relations \shortcite{miller2013language, landau1993and}. 
+
+% how do we connect inputs to percepts
+Predicting which parts people use to parse the visual world has been a core target for classic theories of perceptual organization \shortcite{palmer1977hierarchical,marr1978representation,hoffman1984parts,biederman1987recognition,hummel1992dynamic} and continues to pose challenges for modern vision models \shortcite{mo2019partnet, bear2020learning, hinton2021represent}.
+However, empirical tests of these proposals have generally relied upon simple discrimination tasks rather than richer behavioral readouts, limiting their ability to evaluate detailed correspondences between each putative representation and the full set of parts and relations that people can identify.
+Further progress on these questions may thus benefit from embracing the use of more naturalistic and complex readout tasks for achieving higher resolution into the content and structure of perceptual representations \shortcite{sun2021seeing, mukherjee2019communicating}. 
+
+
+% \jda{someone fill in: what is a concept, and what does it mean to ``have'' a concept}
+Consider the bottom-most \emph{gadget} in Fig.~\ref{fig:task}A: even though this object does not correspond to a familiar category, it is easy to guess that it contains a row of \texttt{buttons} or \texttt{dials}, and that it is topped by an \texttt{antenna} or a \texttt{knob}.
+But just as we do not have a pre-existing concept for every object we encounter, we do not have a concept corresponding to every part or feature: in Fig.~\ref{fig:task}A, for example, most people do not have a concept corresponding to a \texttt{row of exactly five dials}, or a \texttt{box with an antenna on top}. 
+
+Indeed, a complex object can in principle be decomposed in many different ways, but that does not mean that people . What characterizes the set of concepts that humans \emph{do} have? Why these, and not others?
+% Indeed, a complex object can be decomposed into combinatorially many substructures like these, but a typical human will analyze an object using only a tiny subset of these. What characterizes the set of concepts that humans \emph{do} have? Why these, and not others?
+
+
+
+
+% how do we connect from percepts to linguistically expressible concepts?
+% Meanwhile, it is not obvious which level of abstraction  relevant for characterizing its structure.
+
+
+
+
+
+
+% How do people actually decompose these objects when describing their structure? And what are the principles that explain why they decompose them one way instead of another?
+% There is considerable evidence that languages have been shaped by communicative need to expose relevant structure in the world \shortcite{rosch1976basic, tversky1984objects}. 
+% We do not have words for every possible part decomposition, hence the parts that do become lexicalized in our vocabulary may be the product of resolving a tradeoff between informativeness and cognitive economy \shortcite{regier201511,kirby2015compression,zaslavsky2018efficient}.
+
+
+
+This paper seeks to answer both questions. 
+To do so, we use \emph{language} as a source of evidence for the human concept library, and \emph{programs} as representations of the internal structure of concepts. Both components of this approach have a long history in cognitive science: 
+
+%%%%%%
+% \jda{someone fill this in: not exactly the regier et al cites, but instead support for the claim ``has a lexicon entry'' = ``has a concept''}. 
+% \jda{what's new about our synthesis of these tools? relative to the efficient comm literature, something like ``we're not just studying words, but the internal structure of the concepts they specify''}
+%%%%%%
+
+In \textbf{Part I}, we describe a procedure for generating complex but naturalistic visual stimuli that can be described by programs. Using this procedure, we collect a large dataset of images paired with both programmatic and natural language descriptions. Analyzing these descriptions reveals a distinctive feature of the concept library: individual concepts are \emph{boundedly complex}, and as stimuli grow more complex, their descriptions become \emph{longer} rather than reliant on more complex concepts.
+In \textbf{Part II}, we refine this picture of the concept library. We show that a preference for bounded concept complexity is not arbitrary, but instead reflects a fundamental trade-off between the complexity of the library and the complexity of individual object analyses. We show that human lexical choice is best explained by libraries that \emph{optimize a description length criterion}: minimizing the length of all the programs in the library plus the length of an average stimulus expressed in terms of those programs.
+
+%%%%%%
+% \jda{This is also a place we could distinguish what we're doing from noga/terry r/ted g-type work}
+%%%%%%
+
+Together, these results suggest that the human concept inventory, like \jda{someone fill in: various other aspects of human cognition}, reflects a sophisticated trade-off between complexity and explanatory adequacy, and that the internal structure of concepts (modeled as programs and revealed in lexical choice) is an important component of this trade-off.
+
+\begin{comment}
 
 %%%% PHENOMENON: How do we talk about structure in the world? 
-\noindent The world is filled with a great variety of objects, yet people have no trouble finding ways to communicate about them. 
+\noindent The world is filled with a great variety of objects, yet people have no trouble finding ways to talk about them. 
 People not only know what to call a given object, but also how to describe its structure --- what parts it is composed from and how those parts are arranged.
 % In other words, the underlying structure of our percepts and concepts is often reflected in the structure of our language \cite{miller2013language,landau1993and}.
 In other words, our experience of structure in the visual world and the language we use to communicate about it appear to be closely coupled \cite{miller2013language,landau1993and}.
@@ -167,7 +229,7 @@ We then evaluate how well the programs written in each library predict how much 
 % explain quantitative and qualitative patterns in human language.
 While a ``base'' library containing only the simplest shape primitives (e.g., block) explains some variance in the length of linguistic descriptions, we found that libraries containing moderately complex part concepts (e.g., pillar) provide both efficient compression of these objects and better explain the way people describe them.
 
-
+\end{comment}
 % Taken together, our findings highlight the value of measuring naturalistic language behavior at scale and using structured program representations for exposing the perceptual units that organize our understanding of the visual world.
 
 % In this paper, we propose a new approach for probing conceptual structure through linguistic descriptions.
@@ -199,6 +261,8 @@ While a ``base'' library containing only the simplest shape primitives (e.g., bl
 
 % To evaluate this, we develop a dataset of two domains of hierarchical object stimuli (Fig. \ref{fig:task}A), and conduct a procedural language experiment to elicit human descriptions of each object. We find that people use different, context-specific linguistic vocabularies dependent on the subdomain of objects (Part I). We then introduce the formal representational approach, defining program \textit{DSLs} at varying levels of abstraction, that we use to model abstraction choice in language. Using this, we first use \textit{program description length} alone to correlate programs and language (Part II), and discuss findings and challenges of this approach. Finally, we introduce a more expressive \textit{program-language alignment} model, and find that people's language is best explained in this model by DSLs that jointly minimize program description length \textit{and} overall DSL size (Part III).
 
+
+
 \section{Part I: Eliciting procedural descriptions \\ of object structure} \label{sec-part-i}
 % Consider how you might describe the drawing or block tower in Figure \ref{fig:task}A. Both images could be described in language that carves up the image, intuitively, at multiple levels of abstraction -- how would you choose between describing the drawing using a simple but low-level vocabulary of basic strokes (like \textit{lines, circles, and squares}) vs. a set of names for some of its functional parts (like \textit{antenna} or \textit{dial}); or between describing the block tower as composed of \textit{red blocks} and \textit{blue blocks} vs. of higher-level parts like a \textit{roof} and \textit{floors}?
 
@@ -217,8 +281,12 @@ While a ``base'' library containing only the simplest shape primitives (e.g., bl
 % And how does context affect the level of abstraction that people use to represent objects?
 % To study these questions, 
 
-To gain traction on the question of how people robustly communicate about object structure, we first developed a large and varied collection of structured object stimuli and elicited natural-language descriptions of them. % (Fig.~\ref{fig:task}A).
+A core motivation for this work is to propose and validate a general approach to identifying the library of part concepts that people invoke to decompose objects. 
+Towards this end, we needed a large and varied enough collection of objects, and a naturalistic task for eliciting detailed descriptions of their structure. 
+In Part I, we describe our strategy for synthesizing a diverse collection of novel objects and encouraging human participants to thoroughly describe the parts they contain. 
+We also report insights from our analysis of how well a ``base'' graphics library containing only the simplest shape primitives could explain how many words and which words people used.
 
+% To gain traction on the question of how people robustly communicate about object structure, we first developed a large and varied collection of structured object stimuli and elicited natural-language descriptions of them. % (Fig.~\ref{fig:task}A).
 % In this section, we describe our stimulus  and task procedure, and evaluate a basic correspondence between the language participants used to describe our stimuli and the program representations that underlie their construction.
 
 \subsection{Methods}
@@ -239,18 +307,9 @@ Participants provided informed consent and were paid approximately \$15 per hour
 
 \paragraph{Stimuli} 
 
-% todo: tie to program abstraction
-% Desiderata: 1) varied set of categories, 2) hierarchical structure; 3) primitives + higher-order abstractions available to describe, 4) novel + evocative
-% 	What do these buy us?
-% #1 more general findings
-% #2 reminiscent of hierarchical structure of real-world concepts
-% #3 allows us to test the notion of "basic-level" but for parts (Rosch et al.) (“just right” level of abstraction)
-% #4 lets us look at learning (later)
-
 % To accomplish this, we constructed two domains of stimuli-- (\textit{technical drawings} and \textit{block towers}) (Fig. \ref{fig:task}A)-- that are each generated from a shared base set of procedural, symbolic primitives (shapes or blocks).
 % We then ran an experiment to elicit language from subjects who were familiarized with stimuli from a specific \textit{subdomain}-- each containing items generated from distinct generating procedures over these primitives and varying hierarchically in terms of their compositional parts.
 % We hypothesized that the vocabularies people used to describe each stimulus would be \textit{context-specific}: that participants would tend to use different vocabularies tailored to the subdomain distribution of stimuli they were shown.
-
 
 % different motivation for artificial stimuli: XXX
 % Don't need to talk about nameability: say it has structure
@@ -258,25 +317,56 @@ Participants provided informed consent and were paid approximately \$15 per hour
 % While many such categories exist in the real world, these often come with canonical ways of being decomposed into parts, or have a hierarchical structure that is too ambiguous to permit the formal modeling approach of \ref{sec-part-ii}.
 
 % To construct a set of stimuli with variation in compositional structure, 
-Our stimulus set was divided into two distinct \textit{domains}, each procedurally generated from a different set of base primitives (Fig.~\ref{fig:task}A):
-\textit{technical drawings} were designed to resemble schematic drawings of functional objects and were composed of simple geometric shapes; 
-\textit{block towers} were designed to resemble simple architectural models and were composed of 2D rectangular blocks.
-Each of the two domains were further divided into four \textit{subdomains}, each defined by a distinct generative model that was hand-designed to produce objects of a recognizable subordinate category (e.g., \textit{furniture}, \textit{castle}) from a set of predefined abstractions (e.g., \textit{legs}, \textit{towers}).
 
-Generative models consisted of a set of nested, parametric functions operating over the base primitives, hierarchically composing them into increasingly complex, recursively-defined parts.
-A \textit{dresser}, for example, is composed of \textit{drawers}, which are in turn composed of a \textit{panel} and \textit{knobs}, and which are defined finally over a shared set of simple shape primitives.
-Alongside each stimulus, generative models also emitted a corresponding \textit{program}, expressed in a domain-specific language, that fully specified a procedure for recreating the stimulus from the set of base primitives shared across its \textit{domain}.
-We enumerated stimuli for each subdomain, and selected a random but biased sample of each to obtain 250 stimuli of varying complexity for each subdomain.
+% todo: tie to program abstraction
+% Desiderata: 1) varied set of categories, 2) hierarchical structure; 3) primitives + higher-order abstractions available to describe, 4) novel + evocative
+% 	What do these buy us?
+% #1 more general findings
+% #2 reminiscent of hierarchical structure of real-world concepts
+% #3 allows us to test the notion of "basic-level" but for parts (Rosch et al.) (“just right” level of abstraction)
+% #4 lets us look at learning (later)
+% why drawings? why block towers?
+
+To ensure that we had a large enough collection of objects that varied in the kind and amount of structure they contain, we developed a hierarchical procedure for synthesizing complex configurations of shapes. 
+Taking inspiration from recent work employing line drawings and block towers to investigate how people learn and represent the the compositional structure of objects \shortcite{tian2020learning, mccarthy2021learning,wang2021learning}, we defined two stimulus \textit{domains}, distinguished by the set of base shape primitives used to generate them (Fig.~\ref{fig:task}A).
+\textit{Drawings} were composed of simple geometric curves (i.e., line, circle) and evocative of familiar object categories; \textit{Towers} were composed of rectangular blocks (i.e., horizontal and vertical dominoes) and evocative of simple architectural models.
+
+To investigate the degree to which people invoked category-specific part concepts to describe these objects, rather than the same set of ``atomic'' base primitives in all cases, we further defined four \textit{subdomains} nested within each domain. 
+Within \textit{Drawings}, we informally designated these as \textit{nuts \& bolts}, \textit{vehicles}, \textit{gadgets}, and \textit{furniture}; and within \textit{Towers}, \textit{bridges}, \textit{cities}, \textit{houses}, and \textit{houses} (Fig.~\ref{fig:task}A).
+For each subdomain, we procedurally generated 250 unique examples, hierarchically composing the base primitives into increasingly complex, recursively defined parts. 
+A \texttt{dresser}, for example, was composed of \texttt{drawers}, which are in turn composed of a \texttt{panel} and \texttt{knobs}, and which are themselves defined by combining \texttt{circles} and \texttt{lines}.
+In sum, this procedure yielded a collection of 2000 novel objects that spanned a wide range in visual complexity: 1000 Drawings and 1000 Towers, each accompanied by a graphics program that could be used to regenerate it in terms of the base primitives.
+
+% Alongside each stimulus, generative models also emitted a corresponding \textit{program}, expressed in a domain-specific language, that fully specified a procedure for recreating the stimulus from the set of base primitives shared across its \textit{domain}.
+% We enumerated stimuli for each subdomain, and selected a random but biased sample of each to obtain 250 stimuli of varying complexity for each subdomain.
+
+% two domains were further divided into four \textit{subdomains}, each defined by a distinct generative model that was hand-designed to produce objects of a recognizable subordinate category (e.g., \textit{furniture}, \textit{castle}) from a set of predefined abstractions (e.g., \textit{legs}, \textit{towers}).
+
+% Our stimulus set was divided into two distinct \textit{domains}, each procedurally generated from a different set of base primitives (Fig.~\ref{fig:task}A):
+% \textit{technical drawings} were designed to resemble schematic drawings of functional objects and were composed of simple geometric shapes; 
+% \textit{block towers} were designed to resemble simple architectural models and were composed of 2D rectangular blocks.
+% Each of the two domains were further divided into four \textit{subdomains}, each defined by a distinct generative model that was hand-designed to produce objects of a recognizable subordinate category (e.g., \textit{furniture}, \textit{castle}) from a set of predefined abstractions (e.g., \textit{legs}, \textit{towers}).
+
+% Generative models consisted of a set of nested, parametric functions operating over the base primitives, hierarchically composing them into increasingly complex, recursively-defined parts.
+% A \textit{dresser}, for example, is composed of \textit{drawers}, which are in turn composed of a \textit{panel} and \textit{knobs}, and which are defined finally over a shared set of simple shape primitives.
+% Alongside each stimulus, generative models also emitted a corresponding \textit{program}, expressed in a domain-specific language, that fully specified a procedure for recreating the stimulus from the set of base primitives shared across its \textit{domain}.
+% We enumerated stimuli for each subdomain, and selected a random but biased sample of each to obtain 250 stimuli of varying complexity for each subdomain.
 
 \paragraph{Task procedure}
 
-Each participant produced descriptions for 10 items drawn from a single \textit{subdomain} (e.g., only \textit{castles}). 
-To gain familiarity with the task-relevant distribution of stimuli and part abstractions, participants first clicked through 25 images of other stimuli from the same subdomain.
-As participants typed descriptions, they also saw previews for 7 upcoming stimuli.
+Each participant was instructed to provide step-by-step instructions for how to ``draw'' or ``build'' 10 different objects sampled from a \textit{single} subdomain, such that someone else could reconstruct each one based on their description.
+% Each participant produced descriptions for 10 items drawn from a single \textit{subdomain} (e.g., only \textit{castles}). 
+% To gain familiarity with the task-relevant distribution of stimuli and part abstractions, participants first clicked through 25 images of other stimuli from the same subdomain.
+At the beginning of each session, participants were first familiarized with the general characteristics of the that subdomain by viewing 25 examples (none of which then appeared during the main experiment).
+Throughout the session, they were also shown the upcoming 7 objects they would be asked to describe, to provide them with concurrent information about how objects varied within the subdomain.
 % However participants were not encouraged to produce instructions that disambiguated their items from others in their domain, as in a traditional reference game.
-We asked participants to type a complete ``step-by-step'' procedure for reconstructing a stimulus, either describing how to ``draw'' the item if it was a \textit{technical drawing}, or how to ``build'' the item if it was a \textit{block tower}.
-To disentangle the language used to refer to the parts of an object from spatial descriptions of where those parts should go, participants typed each step of their procedure into a pair of \textit{what} and \textit{where} text boxes, describing what should be drawn/placed where, in order, to reproduce the target image. 
-Participants could add as many instruction steps as they needed and had no time limit.
+Because we are primarily focused on interrogating which part descriptors people invoke, we designed the text-entry interface to encourage participants to describe each step by composing a \textit{what}-phrase and a \textit{where}-phrase, which were entered into separate text boxes. 
+Participants could include as many instruction steps as they deemed necessary and there was no time limit on each trial.
+
+% which  language referring to parts distinct from language referring to spatial relations. 
+% \textit{what} they would draw/place \textit{where}
+% designed the text-entry interface with two separate : a \textit{where} 
+% the language used to refer to the parts of an object from spatial descriptions of where those parts should go, participants typed each step of their procedure into a pair of \textit{what} and \textit{where} text boxes, describing what should be drawn/placed where, in order, to reproduce the target image. 
 
 \paragraph{Language preprocessing} % spacy, en_core_web_lg,
 To investigate the content of the instructions generated by participants, we use the spaCy NLP library to extract and lemmatize words, using part-of-speech (POS) tagging to remove determiners and punctuation. We also replaced common typos (``sqaure,'' ``cirlce,'' etc.) and spelling variations (``centre,'' ``colour,'' etc.) with their canonical spellings in US English.
@@ -294,18 +384,22 @@ To investigate the content of the instructions generated by participants, we use
 % We suspected that this was due to participants identifying a greater number of distinct entities in the \textit{block tower} stimuli, which was supported by a greater number of words entered in the \textit{what} boxes of \textit{block towers} than for \textit{technical drawings} ($b=25.8$, $t=9.55$, $p<0.001$).
 % Together, these results confirm that participants' descriptions were sensitive to the kinds of items they were describing, but what about the stimuli themselves explains this variation in language? 
 %%%%%%%
-The high degree of shape variation in our stimulus set provided us with the opportunity to explore the relationship between the complexity of an object and how many words participants used to describe it.
-For these analyses, we operationalize object complexity as the length of the shortest graphics program needed to recreate it, written using simple shape primitives in a ``base'' library (i.e., blocks, lines).
-Prior work has suggested a systematic but non-linear relationship between this measure of  object complexity and the length of their linguistic descriptions \cite{sun2021seeing}.
+The high degree of shape variation in our stimulus set provided us with a natural opportunity to explore the relationship between the complexity of an object and the length of the linguistic description participants provided for it.
+Insofar as participants display a tendency to decompose objects into a consistent number of parts, regardless of how complex these parts are, the length of their descriptions would be predicted to remain stable over a wide range in object complexity. 
+Alternatively, if participants tend to decompose objects into a set of commonly recurring parts, and provide instructions for each one, the length of their descriptions would be predicted to positively correlate with object complexity. 
+A third possibility is that there is a systematic but non-linear relationship between object complexity and linguistic description length \cite{sun2021seeing}, consistent with a compromise between the first two strategies. 
+% has suggested a systematic but non-linear relationship between this measure of  object complexity and the length of their linguistic descriptions \cite{sun2021seeing}.
 % , which was consistent with initial observations in our data (Fig. \ref{fig:words}A).
 % To test this hypothesis more rigorously, we operationalized natural-language description length using the mean number of words entered in the \textit{what} text boxes and operationalized the program length as the number of tokens required to express that object in the base DSL.
 % To test this hypothesis more rigorously, we fit a mixed-effects model to predict the length of each natural-language description, including fixed effects of the object's subdomain (with eight levels) and the corresponding program length in the base DSL.
-To evaluate this hypothesis, we fit a mixed-effects model to predict the number of words entered (into the \textit{what} text boxes) from program length (Fig. \ref{fig:words}A). %the number of program tokens required to recreate the object (Fig. \ref{fig:words}A).
-To control for clustered participant-level variation in the use of the text boxes, we included random intercepts and effects of program length at the participant-level.
-We observed a significant main effect of program length, $t(318)=14.8, p < 0.001$ across all subdomains (Fig.~\ref{fig:words}B).
+
+For these analyses, we operationalize object complexity as the length of the graphics program that generated it using the base primitives and measure the length of linguistic descriptions as the number of words provided in the \textit{what} text boxes only.
+To tease apart the above possibilities, we fit a mixed-effects model to predict linguistic description length from graphics program length (Fig. \ref{fig:words}A), including random intercepts for participants and random effects of program length at the participant level.
+% and effects of program length at the participant-level. %the number of program tokens required to recreate the object (Fig. \ref{fig:words}A).
+We observed a significant main effect of program length, $t(318)=14.8, p < 0.001$ across all subdomains (Fig.~\ref{fig:words}B), providing evidence against the possibility that participants invoke part concepts of arbitrary complexity in order to provide instructions of the same length. 
 We also found that a model including an additional quadratic effect of program length, allowing for a non-linear relationship, significantly improved the fit, $\chi^2(3)=38.6$, although the strength of this relationship varied across subdomains.
 These findings suggest that people generally use more words to describe more complex objects, but the strength and nature of this relationship can vary widely across object categories. 
-Moreover, even the best-fitting quadratic model failed to capture a large proportion of the variation in language using only the length of programs written only in terms of simple shape primitives.
+Moreover, even the best-fitting quadratic model failed to capture a large proportion of the variation in language using only program length as a measure. % written only in terms of simple shape primitives.
 
 % Nevertheless, it appeared that instructions produced for both domains spanned a range of levels of abstraction (Fig. \ref{fig:words} A), with some referring to lower level primitives (i.e. geometric shapes and individual blocks) and some to more abstract compositions of these lower elements (e.g. ``desks'', ``pillars'', and ``castle-like block towers'').
 % Stimuli from each domain were constructed from distinct sets of base primitives that can be combined according to distinct sets of constraints, allowing us to investigate whether participants systematically varied their vocabulary according to their context.
@@ -337,7 +431,7 @@ Moreover, even the best-fitting quadratic model failed to capture a large propor
 
 \paragraph{People use different words to describe different objects} % Looking at content rather than length
 
-While none of the items in our stimulus set look exactly like real-world objects, several of them are nevertheless \textit{evocative} of real-world categories (e.g., vehicles, furniture, houses). 
+While none of the items in our stimulus set look exactly like real-world objects and buildings, several of them are nevertheless \textit{evocative} of familiar visual categories (e.g., vehicles, furniture, houses). 
 Insofar as these associations guided their language behavior to some extent, participants may have used different words to describe the parts of objects from different subdomains. 
 Alternatively, if people referred exclusively to low-level shape primitives common to all subdomains within a given domain, then we would not expect there to be large differences in the kind and relative frequency of words people produced. 
 To tease apart these possibilities, we aggregated tokens produced by all participants for objects in each subdomain and computed the pointwise mutual information (PMI) for each word, providing a measure of the strength of association between a given word and subdomain (Fig.~\ref{fig:words}B).
@@ -346,11 +440,20 @@ To tease apart these possibilities, we aggregated tokens produced by all partici
 % We aggregate the preprocessed instructions across each subdomain and compute the pointwise mutual information (PMI) of each word with respect to each subdomain (as opposed to the full domain; we consider the domains independently.) 
 % These PMI values were estimated using a Laplace smoothing metric to eliminate extremely low-frequency words (n $\leq$ 5). %; full analysis code is released at the code repository.
 This analysis revealed several words that were used often within a particular subdomain, but not in others (e.g., \textit{drawer}, \textit{leg}, and \textit{knob} in the \textit{furniture} subdomain), suggestive that certain part concepts may be specific to subdomain. 
-However, examining the relative word frequency distribution produced greater discriminability by subdomain for \textit{technical drawings} ($\Delta F = 12.5$, 95\% CI: [$9.46$, $16.0$], $p<0.001$) than for {block towers} ($\Delta F = 1.47$, 95\% CI: [$0.0441$, $2.83$], $p=0.088$). \textbf{JUDY/WILL TALK ABOUT THIS.}
+%%% JSD analysis
+To quantitatively evaluate whether there was a difference in participants' word choice across subdomains, we computed the Jensen-Shannon distance (JSD) between the word frequency distributions aggregated across all trials in each subdomain, and compared this value to a null distribution of random assignments of trials to subdomain groups.
+We found that mean distance between subdomains was significantly greater than between random assignments to subdomains (\textit{Drawings}: $d = 0.439$, $p < 0.001$; \textit{Towers}: $d = 0.328$, $p < 0.001$), supporting the hypothesis that participants relied on different words to describe the parts of objects from different subdomains.
+The larger JSD value for Drawings further suggests that the subdomains of Drawings elicited more distinct descriptions compared to those of Towers. %any interpretation needed here?
+% DOMAIN-LEVEL JSD: To estimate how dissimilar language was across domains, we computed the Jensen-Shannon distance (JSD) between the word frequency distributions aggregated across all trials in each domain, and compared this value to a null distribution of random assignments of trials to domains.
+% We found that the distance between word distributions at the domain-level was significantly greater than would be expected by chance ($d = 0.736$, $p<  0.001$).
+% Similarly, when we instead aggregated over subdomains, we found that mean distance between subdomains was significantly greater than between random assignments to subdomains (\textit{Drawings}: $d = 0.439$, $p < 0.001$; \textit{Towers}: $d = 0.328$, $p < 0.001$).
 Taken together, these exploratory analyses indicate that people used a wide variety of terms, in many cases using words that correspond to the parts of real-world objects, rather than to simple graphics primitives.
-Moreover, we discovered that people often used different words to describe otherwise visually similar objects, although this was more pronounced for the \textit{technical drawings}.
+Moreover, we discovered that people often used different words to describe otherwise visually similar objects, although this was more pronounced for the \textit{Drawings}.
+
 
 % This is further supported by computing the F-statistic to measure within-cluster variance, comparing word-count vectors labeled with a given subdomain to randomly-assigned subdomain labels. 
+
+% However, examining the relative word frequency distribution produced greater discriminability by subdomain for \textit{technical drawings} ($\Delta F = 12.5$, 95\% CI: [$9.46$, $16.0$], $p<0.001$) than for {block towers} ($\Delta F = 1.47$, 95\% CI: [$0.0441$, $2.83$], $p=0.088$). 
 
 % We find that the \textit{technical drawing} subdomain labels explain cluster variance signficantly better than random assignments ($\Delta F = 12.5$, 95\% CI: [$9.46$, $16.0$], $p=0$); this effect is not significant for subdomain labels in the \textit{block towers} domain ($\Delta F = 1.47$, 95\% CI: [$0.0441$, $2.83$], $p=0.088$).
 
@@ -365,7 +468,7 @@ Moreover, we discovered that people often used different words to describe other
 The variation in words used across subdomains suggests that people represent and often prefer to use subdomain-specific \textit{part concepts} to describe our stimuli. Tasked with describing a large set of related objects drawn from a highly-structured subdomain, they readily pick out and name part concepts like \textit{knobs} and \textit{drawers}, or 
 \textit{windows} and \textit{doors}. How do they choose this particular lexicon: what determines \textit{how many}, and \textit{which} part concepts, they name?
 
-In this section, we now formalize this problem as a search over the space of \textit{possible graphics libraries} that can be used to represent each subdomain. We introduce a \textit{library abstraction} procedure used to construct a hypothesis space of alternative \textit{graphics libraries} containing parts at varying levels of complexity, based on the parametric structure of each subdomain's original generative model. We then use introduce a \textit{library-to-vocabulary alignment} metric, using tools for aligning parallel language corpora from the statistical machine translation literature, which measures how well programs written in each library predict the language people actually use for each subdomain.
+In this section, we now formalize this problem as a search over the space of \textit{possible graphics libraries} that can be used to represent each subdomain. We introduce a \textit{library abstraction} procedure used to construct a hypothesis space of alternative \textit{graphics libraries} containing parts at varying levels of complexity, based on the parametric structure of each subdomain's original generative model. We then use introduce a \textit{library-to-vocabulary alignment} metric using a model from the statistical machine translation literature, which measures how well programs written in each library predict the language people actually use for each subdomain.
 
 Together, these modeling approaches allow us to formalize a hypothesis about part representation in language: that people name part concepts corresponding to graphics libraries tailored to each subdomain, which provide both efficient compression of the objects they are describing while \textit{also} minimizing the size of the graphics library itself.
 
@@ -434,7 +537,7 @@ This tradeoff between program description length $|\pi|$ and library size $|L|$ 
 
 As DSL-size $L$ grows monotonically with level of abstraction ($L_{\text{base}} \leq L_1 \leq L_2 \leq L_3$), Fig. \ref{fig:perplexity-length} (dashed line) plots this combined representational cost $C_L = |L| + \sum_{\pi \in \mathcal{D}}{|\pi|}$. This reveals a characteristic non-monotonic trend: $C_L$ is minimized in intermediate-level DSLs and increases in the base DSL (when programs are long) and in the highest-order DSLs (when the number of subomdain-specific abstractions overwhelms gains in program compression).
 
-\paragraph{People name part concepts corresponding to these moderately complex libraries}
+\paragraph{Peoples oderately complex libraries}
 We can finally consider the formal \textit{DSL-vocabulary alignment} metric in relation to our original, subdomain-level hypothesis. Fig. \ref{fig:perplexity-length} (solid line) plots the \textit{mean-log-likelihoods} under the DSL-vocabulary alignment model (higher indicates words are better predicted by DSL components) for each subdomain, along the same $L$ x-axis.
 
 We first confirm that this metric identifies certain DSLs which align significantly better to the vocabulary than others. A one-way ANOVA finds that there is a strongly significant difference (p $<$ 0.001) in mean-log-likelihoods between DSLs, in all subdomains. 
@@ -453,15 +556,16 @@ In particular, we find evidence that language is generally better explained by p
 
 %%%% WIDER CONTRIBUTION %%%%
 
-(Wider contribution)
+(Wider contribution: XXX)
 
 
 %%%% FUTURE DIRECTIONS 1: FOLLOW-UP ON INTERPRETABILITY  %%%%
 
 
 Linguistic abstraction can provide a way of capturing more information in fewer words, however this process can also be lossy.
-In future work, we aim to measure how precisely linguistic descriptions describe the stimuli by showing naive participants the descriptions and asking them to pair parts of the descriptions with parts of the objects.
-%reconstruct the stimuli from the set of base primitives.
+In future work, we aim to measure how robustly linguistic descriptions describe the stimuli by presenting them to naive participants and measuring performance on a series of reconstruction tasks.
+% asking them to pair parts of the descriptions with parts of the objects.
+% reconstruct the stimuli from the set of base primitives.
 
 % more data/ ppts?
 
@@ -469,13 +573,13 @@ In future work, we aim to measure how precisely linguistic descriptions describe
 
 The idea that people favor a \textit{basic level} of abstraction -- one adaptively selected as a "just right" level of abstraction dependent on context -- is well-documented in both word choice and non-linguistic object identification tasks \shortcite{brown1958shall, rosch1976basic}.
 %communicative goal
-One form of contextual variation is the speaker's communicative goal.
-The requirement for producing instructions, kept constant in the current study, may favor finer-grained, procedural language, in comparison to, say, reference game contexts in which visually salient details might be more important for identification.
-
+One such form of contextual variation is the speaker's communicative goal.
+The requirement of communicating an interpretable procedure, kept constant in this study, may favor fine-grained procedural representations, compared to contexts in which communicating about an object's identity is more important.
+Reference games are a well-studied example of such a context, and would provide a salient alternative to compare to the results presented here.
 
 % individual learning
 %   =>  Pre-post study: individual non-linguistic experience vs. individual language usage
-In analyses not reported above, we also found evidence of a decrease in description length over time. 
+One empirical observation not reported above was evidence of a decrease in description length over time. 
 A possible explanation for this phenomenon, suggested by prior work involving a collaborative block-tower assembly task \cite{mccarthy2021learning}, is a linguistic shift towards higher level of abstraction over time.
 How people acquire new procedural abstractions, and the extent to which language use modulates such learning, is an avenue for future work.
 
@@ -489,7 +593,7 @@ How people acquire new procedural abstractions, and the extent to which language
 
 
 %%%% ZOOMED OUT %%%%
-(zoomed out )
+(zoomed out: XXX )
 
 
 % \paragraph{Model-based DSL identification meaningfully distinguishes between DSLs that better explain language.} We first verify that our method meaningfully differentiates between DSLs of differing sizes. Stat: Reject null hypothesis of flat line. ANOVA: compare means between all DSLs.
