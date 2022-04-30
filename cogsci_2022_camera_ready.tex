@@ -1,0 +1,98 @@
+% 
+% Annual Cognitive Science Conference
+% Sample LaTeX Paper -- Proceedings Format
+% 
+
+%% Change "letterpaper" in the following line to "a4paper"e if you must.
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{cogsci}
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage[margin=1in]{geometry} 
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
+\usepackage{nicefrac}       % compact symbols for 1/2f, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{float}
+\usepackage[colorlinks,allcolors=purple]{hyperref}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{gensymb}
+\usepackage{stmaryrd}
+\usepackage{amssymb}
+\usepackage{todonotes}
+\usepackage{comment}
+
+\cogscifinalcopy 
+
+%%% Macros for comments
+\newcommand{\jda}[1]{{\color{blue}[jda: #1]}}
+
+
+\usepackage{pslatex}
+\usepackage{apacite}
+
+
+%\usepackage[none]{hyphenat} % Sometimes it can be useful to turn off
+%hyphenation for purposes such as spell checking of the resulting
+%PDF.  Uncomment this block to turn off hyphenation.
+
+
+\setlength\titlebox{4.5cm}
+% You can expand the titlebox if you need extra space
+% to show all the authors. Please do not make the titlebox
+% smaller than 4.5cm (the original size).
+%%If you do, we reserve the right to require you to change it back in
+%%the camera-ready version, which could interfere with the timely
+%%appearance of your paper in the Proceedings.
+
+\title{Identifying concept libraries from language about object structure}
+
+% TODO: figure out how to fit all authors. 
+\author{
+\textbf{Catherine Wong} \\ MIT \\ \texttt{\href{mailto:catwong@mit.edu}{\url{catwong@mit.edu}}}
+ \And
+\textbf{William P. McCarthy} \\  UC San Diego \\ \texttt{\href{mailto:wmccarthy@ucsd.edu}{\url{wmccarthy@ucsd.edu}}}
+ \And
+\textbf{Gabriel Grand} \\ MIT \\ \texttt{\href{mailto:gg@mit.edu}{\url{gg@mit.edu}}}
+ \And
+\textbf{Judith Fan} \\ UC San Diego \\ \texttt{\href{mailto:jefan@ucsd.edu}{\url{jefan@ucsd.edu}}}
+}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} 
+\input{0_abstract}
+\textbf{Keywords:} programs; perception; parts; compositionality; abstraction
+\end{abstract}
+
+\input{1_introduction}
+
+
+\section{Part I: Eliciting language about \\ object structure} \label{sec-part-i}
+\input{2_part_i}
+
+\section{Part II: Aligning concept libraries \\ to language}\label{sec-part-ii}
+\input{3_part_ii}
+
+
+\subsection{Discussion}
+\input{4_discussion}
+
+\bibliographystyle{apacite}
+
+\setlength{\bibleftmargin}{.125in}
+\setlength{\bibindent}{-\bibleftmargin}
+
+\bibliography{cogsci_2022}
+
+
+\end{document}

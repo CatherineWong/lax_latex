@@ -1,0 +1,95 @@
+
+%%%% SUMMARY %%%%
+% Big picture: ; here, we do this by X.
+% The words we use to describe the world reveal the rich conceptual library with which we represent it. 
+The language we use to describe the world can be revealing of the concepts with which we represent it.
+In this paper, we look to natural language to investigate how people parse complex objects into meaningful parts --- for example, how people decompose a whole \texttt{train} into its \texttt{train cars} and \texttt{wheels}, or a \texttt{house} into its \texttt{windows}, \texttt{walls}, and \texttt{roof}.
+% language provides a uniquely detailed substrate for studying the particular structure we perceive when decomposing a \texttt{train} into its \texttt{train cars} and \texttt{wheels}, or a \texttt{house} into its \texttt{windows} and \texttt{door}.
+We elicited descriptions for a large procedurally generated dataset of objects generated from \textit{graphics programs}, and present a computational approach for linking its generative and hierarchical structure with human descriptions of them. 
+% human descriptions of each object with components of its generative program. 
+We find that the length of people's descriptions varies with the length of an object's generative program, establishing a basic correspondence between language and a program representations of object structure. 
+% We also find that the content of these descriptions is sensitive to the higher-order compositional structure of category subdomains, suggesting that people adapt how they parse and describe these visual stimuli to the broader context of related objects they were shown. 
+By constructing higher-order \textit{concept libraries} which can re-represent each object using more abstract program components, we find evidence that people's language reflects an underlying representational trade-off -- people prefer compact libraries of part concepts that can be used to capture structural motifs appearing in many objects. 
+An intriguing implication of these findings is that there exists a ``basic level'' for part naming, by analogy to the well known basic level for object categories, and that can be explained by similar information-theoretic principles \shortcite{brown1958shall, rosch1976basic}.
+% , but are sensitive to the total number of distinct parts used across the subdomain as whole.
+
+%%%% FUTURE DIRECTIONS 1: CONTEXT  %%%%
+% offers a tool for representing more with less, this linguistic compression 
+While these linguistic abstraction layers enable greater compression, they may also introduce downstream challenges for communication: terms with more abstract meanings may be less interpretable and/or too lossy in some cases (e.g., pedagogical contexts where learners may not be familiar with certain concepts).
+To better understand how people communicate in these scenarios, it may be useful to conduct experiments manipulating what knowledge is shared between communicators to investigate the role of audience design and adaptation in interactive settings \shortcite{clark1982audience,krauss1991perspective,mccarthy2021learning}.
+
+In other settings, the level of detail contained in the descriptions we collected may not be necessary to achieve certain communicative goals, such as object identification. 
+A promising direction is to compare our descriptions to those produced in reference games where coarser distinctions between whole objects are sufficient, with the aim of understanding how task goals and context shape the \emph{relevance} of different levels of abstraction \shortcite{degen2020redundancy,bisk2020experience}. 
+% Future work can build on the modeling approach we use here, to measure how different \textit{object contexts} (such as presenting a subordinate or superordinate collection of stimuli) and \textit{different communicative goals} (such as reference tasks that require conveying an object's identity, or extended collaborative tasks with multiple rounds of communicative feedback) modulate abstraction in language.
+
+It is natural to expect substantial variation across descriptions in how well they support object understanding in others.
+To explore this variation, future work should also measure how well the descriptions we collected in the current study support the ability of other participants to accurately reconstruct the target object, to better understand why some descriptions more informative than others.
+% In future work, we aim to measure the robustness of participants' descriptions to human listeners: we can measure the reconstructive fidelity of full object descriptions (to both naive participants, and participants familiarized to the same subdomains); and the interpretability of individual words (such as with a part-labeling paradigm).
+
+%%%% FUTURE DIRECTIONS 2: BASIC LEVEL %%%%
+% While in principle people could have decomposed these objects in many different ways, we found that people shared a systematic preference to name parts of intermediate complexity. 
+
+% While in principle people could have decomposed these objects in many different ways, we found that people shared a systematic preference to name parts of intermediate complexity. 
+% An intriguing implication of these findings is that there exists a ``basic level'' for part naming, by analogy to the well known basic level for object categories, and that can be explained by similar information-theoretic principles \shortcite{brown1958shall, rosch1976basic}.
+% In the same way that what counts as a basic-level category can be modulated by prior experience \shortcite{tanaka1991object}, we may also expect 
+% Moreover, people used labels for real-world objects rather than graphics primitives. how that?
+
+% abstraction when deciding which parts to name
+% The idea that people favor a \textit{basic level} of abstraction -- one adaptively selected as a ``just right'' level of abstraction dependent on context -- is also 
+% well-documented in both word choice and non-linguistic object identification tasks \shortcite{brown1958shall, rosch1976basic}.
+% While we do find evidence for a preference towards a certain level of abstraction in language, our study focused on a constant communicative context intended to invoke fine-grained descriptions of object work. 
+
+%%%% WIDER CONTRIBUTION %%%%
+Our approach and findings build on a recent and growing literature using programs \shortcite{lake2015human,goodman2014concepts} and libraries of functional components \shortcite{tian2020learning,mccarthy2021learning,wong2021leveraging} to model how people represent and communicate about the world. 
+Our work generalizes previous insights into the statistical learning mechanisms that enable the rapid learning of visual regularities \shortcite{fiser2001unsupervised, orban2008bayesian, austerweil2013nonparametric} by proposing a more expressive program-like representation that can accommodate structure at multiple levels of abstraction.
+% More broadly, our results contribute to a growing body of work on visual categorization \shortcite{austerweil2013nonparametric,orban2008bayesian} and natural language production \shortcite{kirby2015compression,sun2021seeing} experiments suggesting that humans construct and use context-adapted conceptual \textit{abstractions}, with which they can efficiently represent and describe what they see. 
+
+More broadly, our work proposes and validates a general strategy for leveraging complex behavioral readouts (e.g., natural language descriptions) to draw rich and meaningful inferences about the content and structure of mental representations.
+Such approaches have tremendous promise not only to advance cognitive theory, but may contribute to the design of artificial systems that learn more human-like abstractions. 
+
+
+\newpage
+
+% Here, we contribute a general modeling approach for linking complex readouts of behavior, like extended linguistic descriptions, with a formal representational tool that can capture the compositionality and recursive interdependence of human concepts. 
+
+% Our results also suggest a powerful modeling approach for structuring representation in artificial systems. Language elucidates the abstractions people discover to carve, and recarve, the visual world -- suggesting that harnessing linguistic descriptions could guide more flexible discovery of concept libraries that reflect a rich, interpretable, and \textit{human-like} set of abstractions.
+
+
+
+% % How contextual is the level of abstraction? 
+% %   => Collect more data for item-specific and speaker-specific variation
+% %   => Modulate size of domain even more
+
+% % How does shared experience modulate the level of abstraction?
+% %   => Paired tasks (CA++)
+
+
+% %%%% ZOOMED OUT %%%%
+% (zoomed out: XXX )
+% Language provides a window onto the way we extract and represent structure in the world.
+
+
+
+% \paragraph{Model-based DSL identification meaningfully distinguishes between DSLs that better explain language.} We first verify that our method meaningfully differentiates between DSLs of differing sizes. Stat: Reject null hypothesis of flat line. ANOVA: compare means between all DSLs.
+
+% \paragraph{Learned abstractions generally explain language better than the base DSL, and intermediate DSLs explain language better than the most abstract DSLs.}
+% (What about the two cases where it does not? Room for error.) Except for the two domains where DSLs do not improve on perplexity, Fig. 1A shows that the DSL which yields the best perplexity is L1, and that perplexity falls off after, formalizing a ‘basic level’. Why is it L1? Room to shift the prior. 
+
+% STATS: Nested model confirms that there is a non-linear trend (how to report this?) - quadratic fits better than linear.
+
+% \paragraph{DSLs that better explain language minimize base DSL size and program length.} Finally, Fig [BOTTOM ROW] shows |Base DSL| + |program length|.
+% STAT: Is there some way to say this other than pointing at the graphs?
+
+
+% \paragraph{People adapt the abstractions they use contextually to the subdomain.} We hypothesized that higher-level DSLs, containing context-specific abstractions, would always better predict language in each subdomain. Our results in Fig.  \ref{fig:language_libraries}A suggest that this is generally true, along with a more nuanced interpretation: in \textit{most} of the subdomains, a contextual DSL improves perplexity under the translation model as compared to the base DSL. However, in two of the block towers subdomains --  the \textit{cities} and \textit{castles} domain, in fact the base DSL yields the best perplexity. 
+
+% This result suggests that people do indeed adapt the level of abstraction they use in language, dependent contextually on the subdomain of stimuli -- after all, while the base DSL can be used to describe \textit{every} subdomain (eg. people could \textit{always} have described each structure in terms of its low-level blocks), people seem to have chosen it selectively for some domains and other, more context-specific abstractions for others.
+
+% What explains when people fall back on the base DSL of primitives? A visual inspection of the \textit{cities} and \textit{castles} abstractions suggests one intuitive explanation: the availability of commonly-understood linguistic terms to describe these abstractions. While our results in many domains suggest that people flexibly pick out higher-level, contextual abstractions -- and adapt their vocabulary to reflect them -- humans performing a naive procedural description task, intended for other naive speakers, are also constrained by the basic English terms available to them. We see these results as especially promising for ad-hoc \textit{convention formation} paradigms [CITE], to determine whether subjects can \textit{further} adapt their language to a context with additional joint experience.
+
+% \paragraph{People generally choose an intermediate level of abstraction.} Our secondary hypothesis suggests a tradeoff between contextual-abstraction -- which reduces the cost of describing any given stimulus in a subdomain -- and vocabulary size, modeled by the size of each enriched DSL. Our results in Fig.  \ref{fig:language_libraries}A support this conclusion, finding a characteristic U-shaped curve for the domains where more abstract DSLs better predict language: perplexity in the translation model does not increase monotonically with abstraction level (and DSL size.)
+
+% However, as with the previous finding, this result suggests a promising avenue for future work to disentangle the cause of this trend: does this curve reflect an individual choice on the part of the speaker (to take into account the cost of a larger vocabulary), or a limit in the contextual abstraction afforded by language intended for naive listeners (which permits some variation in abstraction level, but may not contain sufficiently interpretable terms as abstrations grow more context specific)? Again, we see this as an especially promising route for considering language between paired speakers in an extended joint conversational context.
+
+
+% People choose flexibly between different levels of abstraction and specificity in language -- we might switch between referring to our \textit{car} to distinguish it from other modes of transportation, and referring to our \textit{orange minivan} to pick it out from other models at a parking lot.

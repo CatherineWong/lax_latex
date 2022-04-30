@@ -1,0 +1,55 @@
+Our understanding of the visual world goes beyond naming objects --- encompassing our ability to parse objects into meaningful parts, attributes, and relations. 
+In this work, we leverage natural language descriptions for a diverse set of 2K procedurally generated objects to identify the parts people use and the principles leading these parts to be favored over others.
+Specifically, we formalize our problem as search over a space of graphics libraries that contain different part concepts, using tools from machine translation to evaluate how well programs expressed in each library align to human language.
+While a library containing only the simplest shape primitives (e.g., \texttt{circle}) explains some variance, we discover that libraries containing part concepts of intermediate complexity (e.g., \texttt{wheel}) provide efficient compression of these objects and better predict people's descriptions.
+Our findings highlight the value of jointly leveraging structured program representations and naturalistic language at scale to study how our perceptual experience is organized.
+
+%% 150 words
+% People understand the visual world by parsing objects into parts, attributes, and relations. What clues about this process can be learned from language?
+% In this work, we collect descriptions for a diverse set of 2,000 procedurally-generated objects in order to reverse-engineer the part representations that people favor. 
+% We formalize our problem as search over a space of graphics libraries at varying levels of abstraction, using tools from machine translation to evaluate how well programs expressed in each library align to natural language.
+% We discover that libraries that optimize information-theoretic compression criteria correspond best to people’s descriptions; intuitively, these libraries contain intermediate part concepts (e.g., pillar) that lie between the lowest (e.g., block) and highest (e.g., bridge) levels of abstraction in each domain.
+% Our findings highlight the value of jointly leveraging structured program representations and naturalistic language at scale to study how our perceptual experience is organized.
+
+%% 148 words
+% Our understanding of the visual world goes beyond naming objects --- encompassing our ability to parse objects into meaningful parts, attributes, and relations. 
+% Here we leverage the language people use to describe a diverse collection of 2K novel objects to understand what parts they find meaningful, and reverse engineer why they favored these parts. 
+% We achieve this by formalizing our problem as search over the space of graphics libraries that contain different part concepts;
+% then evaluate how well programs written in each library explain human language.
+% While a library containing only the simplest shape primitives (e.g., block) explains some variance, we discover that libraries containing moderately complex part concepts (e.g., pillar) provide both efficient compression of these objects and better explain how people describe them.
+% Our findings highlight the value of measuring naturalistic language behavior at scale and using structured program representations for exposing how our perceptual experience is organized. 
+
+%%% 183 words
+% Our understanding of the visual world goes beyond naming objects --- encompassing the the organization of our perceptual experience into parts and relations. 
+% Here we leverage the language people use to describe a diverse collection of 2K novel objects to understand what parts they find meaningful, and reverse engineer the principles that explain why they favored these part descriptors. 
+% We achieve this by formalizing our problem as search over the space of graphics libraries that vary in the visual part concepts they contain. 
+% We then evaluate how well the programs written in each library explain quantitative and qualitative patterns in human language.
+% While we find that a ``base'' library containing only the simplest shape primitives (e.g., block) explains some variance in the length of linguistic descriptions, we discover that libraries containing moderately complex part concepts (e.g., pillar) provide both efficient compression of these objects and better explain the way people describe them.
+% Taken together, our findings highlight the value of measuring naturalistic language behavior at scale and using structured program representations for exposing the perceptual units we use to make sense of the world. 
+%%%
+
+% Our understanding of the visual world goes beyond naming objects --- encompassing the parts and relations that constitute our internal representation of them.
+% although any of these libraries could in principle be used to generate each object.
+% To answer this question, we first designed a large and varied collection of 2K novel objects and elicited natural-language descriptions of them. 
+% Next, we evaluated how well these descriptions could be explained by relating them to graphics programs written using only maximally simple shape primitives. 
+
+% We found a systematic relationship between the number of words used to describe an object and the length of the program required to generate that object in a simple graphics library, as well systematic differences in the vocabularies used to describe objects in different categories.
+% Next, we formalized our 
+
+%%%%%
+% In this paper, we introduce a large corpus of natural-language descriptions for multiple structured object domains ($4650$ descriptions across 2000 distinct objects) along with a novel translation-based approach for identifying concept libraries from language.
+% First, we find a systematic relationship between the number of words required to describe an object and the length of the program required to generate that object in a domain-specific language (DSL), as well as a systematic difference in the vocabularies used to describe objects in different domains. 
+% We then introduce a more expressive \textit{program-language alignment} approach, and find that language is best explained by concept libraries that jointly minimize program description length \textit{and} the underlying number of conceptual primitives in the DSL library.
+% Taken together, our findings emphasize the intimate relationship between conceptual and linguistic representations and provides basis for further exposing the library of conceptual primitives we use to make sense of the world. 
+
+% We experience the visual world as structured into objects and parts, and use language to communicate about that structure, even for entities we have never seen before.
+% Our visual world is richly structured into meaningful objects and parts. 
+% How do people extract and represent such structure?
+% Naturalistic language production presents a promising window into these representations, as a medium adapted for communicating about structure, but it has been challenging to link candidate hypotheses about concept hierarchies to such data.
+% In this paper, we introduce a large corpus of natural-language descriptions for multiple structured object domains ($4200$ descriptions across 2000 distinct objects) along with a novel translation-based approach for identifying concept libraries from language.
+% First, we find a systematic relationship between the number of words required to describe an object and the length of the program required to generate that object in a domain-specific language (DSL), as well as a systematic difference in the vocabularies used to describe objects in different domains. 
+% We then introduce a more expressive \textit{program-language alignment} approach, and find that language is best explained by concept libraries that jointly minimize program description length \textit{and} the underlying number of conceptual primitives in the DSL library.
+% Taken together, our findings emphasize the intimate relationship between conceptual and linguistic representations and provides basis for further exposing the library of conceptual primitives we use to make sense of the world. 
+
+% While we do flexibly shift our words to suit the needs of different contexts, the ways in which we do so when describing compositional phenomena is less well understood.
+% In this paper we present a novel set of hierarchical stimuli, and present an experiment in which we elicited compositional descriptions of these stimuli in different contexts. 
